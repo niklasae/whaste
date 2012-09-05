@@ -18,7 +18,6 @@ whaste.getPlace = function(properties) {
     // --- Document Ready --- //
     $(document).ready(function() {
 
-    var times = 0;
     var checkForPlace = function(e) {
         e.preventDefault();
 
@@ -34,8 +33,14 @@ whaste.getPlace = function(properties) {
             }
         };
 
-        //FIXME Check cookie
+        // Mange the number of attempts using cookie
+        var times = $.cookie('times');
+        if (typeof times === 'undefined' || !times) {
+            times = 0;
+        }
         times++;
+        $.cookie('times', times, { expires: 1, path: '/'});
+        
         if (times <= 3) {
             var properties = {distance: 500, callback: showPlace_callback};
             whaste.getPlace(properties);
@@ -56,17 +61,6 @@ whaste.getPlace = function(properties) {
         $('#content').html(html);
         return false;
     };
-
-        // XXX - crappy test stuff
-        var times = $.cookie('times');
-        console.log('times before:' + times);
-        if (typeof times === 'undefined' || !times) {
-            $.cookie('times', 1, { expires: 1, path: '/'});
-        } else {
-            times++;
-            $.cookie('times', times, { expires: 1, path: '/'});
-        }
-        console.log('times after:' + times);
 
         var noPlacesTemplateSource = $("#no-places-template").html();
         var noPlacesTemplate = Handlebars.compile(noPlacesTemplateSource);
