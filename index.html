@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>WHASTE | Where the Hell Am I Supposed to Eat</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lunch roulett let us ṕick where you are going to eat tonight">
+    <meta name="author" content=" Aref Abedi, Niklas A Emanuelsson and Thomas Backlund">
+
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/libs/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/jquery.cookie.js"></script>
+    <script src="js/libs/handlebars.1.0.beta.6.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script defer src="js/script.js"></script>
+
+</head>
+<body>
+
+    <!-- --- --- - --- --- --> 
+    <!-- --- TEMPLATES --- --> 
+    <!-- --- --- - --- --- --> 
+
+    <script id="no-places-template" type="text/template">
+        <div>
+            <div>
+                {{ title }}
+            </div>
+        </div>
+    </script> 
+
+    <script id="place-template" type="text/template">
+        <div>
+            <div>
+                {{ title }}
+            </div>
+            {{ place.name }}
+            <div>
+                <button class="btn btn-large btn-warning js-select-place" type="button">Looks good!</button>
+                <button class="btn btn-large btn-warning js-get-place" type="button">Hit me agian!</button>
+            </div>
+            <div>{{ stars }}</div>
+        </div>
+    </script>
+
+    <script id="selected-template" type="text/template">
+        <div>
+            <div>
+                {{ title }}
+            </div>
+            {{ place.name }}
+            <div>
+                <a href="#"><img src="img/tweet.png" alt="twitter" /></a>
+            </div>
+            <div>{{ stars }}</div>
+        </div>
+    </script> 
+
+    <script id="no-more-attempts-template" type="text/template">
+        <div>
+            <div>
+                {{ title }}
+            </div>
+        </div>
+    </script> 
+
+
+    <!-- --- --- --- --- --> 
+    <!-- --- Content --- --> 
+    <!-- --- --- --- --- --> 
+
+    <div id="content">
+        <img src="img/logo.png" alt="whaste logo" />
+        <div>
+            Hello! Are you looking for a nearby lunch place!
+        </div>
+        <button class="btn btn-large btn-warning js-get-place" type="button">Yup!</button>
+        <div>Whaste will suggest three and only three lunchplaces for you.</div>
+        <div>Didn't like the first you can skip to the next. But remember, only three a day.</div>
+    </div>
+
+  </body>
+  </html>
