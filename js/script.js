@@ -5,8 +5,23 @@ if (typeof whaste === 'undefined' || !whaste) {
 // Mock
 whaste.getPlace = function(properties) {
     if (Math.random() > 0.1) {
-        var place = {};
-        place.name = 'some place name ' + Math.random();
+        var place = {geometry : {
+                        location : {
+                           lat : -33.8628430,
+                           lng : 151.1952320
+                        }
+                     },
+                     icon : "http://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png",
+                     id : "05bf6e9aa18b35f174f5076c348ce8e91e328aba",
+                     name : "Flying Fish Restaurant",
+                     opening_hours : {
+                        open_now : false
+                     },
+                     rating : 4.30,
+                     reference : "CoQBcwAAAMY0crP_AUzzZbQluYOlNslRtJ8R7jmh40p8mZqS8R1UW0ZNxSJiZgp8SoLSPotbufherQBbo_79NPcDZxJ382ZOgJxnyEGXpN2kkFt-SI3myTpk--4VroUiPvdnPriYsBWtX55F5C5VrBEYvobXjOnRfz2BlxVBEg3KWPZwUpelEhBgctmWBxWO44Aiamdr3dVqGhTdv2635iHM6jeLI0Nc57xJD_2TEQ",
+                     types : [ "bar", "restaurant", "food", "establishment" ],
+                     vicinity : "19-21 Pirrama Road, Pyrmont"
+                  }
         properties.callback(place);
     } else {
         properties.callback();
@@ -46,7 +61,8 @@ whaste.getPlace = function(properties) {
             whaste.getPlace(properties);
 
         } else {
-            var context = {title: 'No more attempts...'};
+            var context = {title: 'No more attempts...',
+                            tweet: {text: encodeURIComponent("Don't know where to have lunch? Let Whaste choose for you"), url: 'http://www.whaste.com', via: 'whaste'}};
             var html = noMoreAttemptsTemplate(context);
             $('#content').html(html);
         }
@@ -56,7 +72,8 @@ whaste.getPlace = function(properties) {
 
     var selectPlace = function(e) {
         e.preventDefault();
-        var context = {title: "Awesome choice! Have a great lunch!"};
+        var context = {title: 'Awesome choice! Have a great lunch!',
+                        tweet: {text: encodeURIComponent("I let @Whaste choose a lunch place for me. What will it choose for you?"), url: 'http://www.whaste.com'}};
         var html = selectedTemplate(context);
         $('#content').html(html);
         return false;

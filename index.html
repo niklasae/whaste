@@ -57,7 +57,7 @@
             </div>
             {{ place.name }}
             <div>
-                <a href="#"><img src="img/tweet.png" alt="twitter" /></a>
+                <a href="https://twitter.com/intent/tweet?text={{ tweet.text }}&url={{ tweet.url }}{{#tweet.via}}&via={{ tweet.via }}{{/tweet.via}}" target="_BLANK"><img src="img/tweet.png" alt="twitter" /></a>
             </div>
             <div>{{ stars }}</div>
         </div>
@@ -67,6 +67,9 @@
         <div>
             <div>
                 {{ title }}
+            </div>
+            <div>
+                <a href="https://twitter.com/intent/tweet?text={{ tweet.text }}&url={{ tweet.url }}{{#tweet.via}}&via={{ tweet.via }}{{/tweet.via}}" target="_BLANK"><img src="img/tweet.png" alt="twitter" /></a>
             </div>
         </div>
     </script> 
