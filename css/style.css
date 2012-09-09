@@ -1,15 +1,107 @@
 @font-face {
-	font-family: noteworthy;
-	src: url('fonts/noteworthy.ttc');
+    font-family: noteworthy;
+    src: url('fonts/noteworthy.ttc');
 }
 
 @font-face {
-	font-family: appleberry_with_cyrillic;
-	src: url('fonts/appleberry_with_cyrillic.ttf');
+    font-family: appleberry_with_cyrillic;
+    src: url('fonts/appleberry_with_cyrillic.ttf');
+}
+
+* { 
+   -webkit-box-sizing: border-box; 
+   -moz-box-sizing:    border-box; 
+   box-sizing:         border-box; 
 }
 
 #content {
+  width: 400px;
+  /* content in center */
+  /*position: fixed;
+  left: 50%;
+  margin-left: -200px;*/
+  
+  margin-top: 20px;
   text-align: center;
   font-family: appleberry_with_cyrillic;
   color: green;
+}
+
+.up-arrow {
+    border-color: black transparent;
+    border-style: solid;
+    border-width: 0px 10px 20px 10px;
+    height: 0px;
+    width: 0px;
+}
+
+    .up-arrow.center {
+        margin-left: 180px;
+    }
+
+
+.place {
+    height: 282px;
+    width: 400px;
+    border: 10px solid black;
+    padding: 5px 5px;
+    color: black;
+}
+
+    .place .info-group {
+        position: relative;
+        height: 100%;
+        width: 100px;
+        float: left;
+        font-weight: bold;
+    }
+
+        .place .info-group p {
+            font-size: 20px;
+        }
+
+        .place .info-group .info {
+            position: absolute;
+            top: 0px;
+            height: 100px;
+        }
+
+        .place .info-group .rating {
+            position: absolute;
+            bottom: 0px;
+
+            background: gray;
+            height: 100px;
+            width: 100%;
+
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            border-radius: 10px; /* future proofing */
+            -khtml-border-radius: 10px; /* for old Konqueror browsers */
+        }
+
+    .place #map {
+        float: right;
+        height: 250px;
+        width: 250px;
+        border: 1px solid black;
+    }
+
+.stars {
+    display: table;
+}
+
+.stars p{
+    width: 200px;
+    display: table-cell; 
+    vertical-align: middle; 
+    text-align: center; 
+}
+
+.stars img.star {
+    height: 60px;
+}
+.stars img.star-faded {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
 }

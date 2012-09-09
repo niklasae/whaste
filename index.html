@@ -21,6 +21,8 @@
     <script src="js/libs/bootstrap.min.js"></script>
     <script defer src="js/script.js"></script>
 
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places"></script>
+
 </head>
 <body>
 
@@ -41,12 +43,32 @@
             <div>
                 {{ title }}
             </div>
-            {{ place.name }}
+
+            <div class="up-arrow center"></div>
+            <div class="place">
+                <div class="info-group">
+                    <div class="info">
+                        <p>{{ place.name }}</p>
+                    </div>
+                    <div class="rating">
+                        <p>Rating</p>
+                        {{ place.rating }}
+                    </div>
+                </div>
+                <div id="map"></div>
+            </div>
+
             <div>
-                <button class="btn btn-large btn-warning js-select-place" type="button">Looks good!</button>
+                <button class="btn btn-large btn-success js-select-place" type="button">Looks good!</button>
                 <button class="btn btn-large btn-warning js-get-place" type="button">Hit me agian!</button>
             </div>
-            <div>{{ stars }}</div>
+            
+            <div class="stars">
+                <p>{{ stars.text }}</p>
+                <img src="img/star.png" class="star" />
+                <img src="img/star.png" class="star" />
+                <img src="img/star.png" class="star star-faded" />
+            </div>
         </div>
     </script>
 
@@ -59,7 +81,6 @@
             <div>
                 <a href="https://twitter.com/intent/tweet?text={{ tweet.text }}&url={{ tweet.url }}{{#tweet.via}}&via={{ tweet.via }}{{/tweet.via}}" target="_BLANK"><img src="img/tweet.png" alt="twitter" /></a>
             </div>
-            <div>{{ stars }}</div>
         </div>
     </script> 
 

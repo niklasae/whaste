@@ -2,7 +2,7 @@ if (typeof whaste === 'undefined' || !whaste) {
     whaste = {};
 }
 
-// Mock
+// XXX - Mock
 whaste.getPlace = function(properties) {
     if (Math.random() > 0.1) {
         var place = {geometry : {
@@ -30,17 +30,28 @@ whaste.getPlace = function(properties) {
 
 (function() {
 
-    // --- Document Ready --- //
-    $(document).ready(function() {
+    // --- Paramas in file scope --- //
+    var map;
+    var noPlacesTemplate, placeTemplate, selectedTemplate, noMoreAttemptsTemplate;
 
+    // --- Functions in file scope --- //
     var checkForPlace = function(e) {
         e.preventDefault();
 
+
         var showPlace_callback = function(place) {
             if (typeof place !== 'undefined' && place) {
-                var context = {title: 'What about this place?', place: place};
+                var context = {title: 'How about this place?', place: place, stars: {text: 'Going with the first suggestions?'}};
                 var html = placeTemplate(context);
                 $('#content').html(html);
+
+                //FIXME: Setup map
+                var pyrmont = new google.maps.LatLng(-33.8665433, 151.1956316);
+                map = new google.maps.Map(document.getElementById('map'), {
+                  mapTypeId: google.maps.MapTypeId.ROADMAP,
+                  center: pyrmont,
+                  zoom: 15
+                });
             } else {
                 var context = {title: 'No places available...'};
                 var html = noPlacesTemplate(context);
@@ -79,17 +90,21 @@ whaste.getPlace = function(properties) {
         return false;
     };
 
+    // --- Document Ready --- //
+    $(document).ready(function() {
+
+        // Compile JS templates
         var noPlacesTemplateSource = $("#no-places-template").html();
-        var noPlacesTemplate = Handlebars.compile(noPlacesTemplateSource);
+        noPlacesTemplate = Handlebars.compile(noPlacesTemplateSource);
 
         var placeTemplateSource = $("#place-template").html();
-        var placeTemplate = Handlebars.compile(placeTemplateSource);
+        placeTemplate = Handlebars.compile(placeTemplateSource);
 
         var selectedTemplateSource = $("#selected-template").html();
-        var selectedTemplate = Handlebars.compile(selectedTemplateSource);
+        selectedTemplate = Handlebars.compile(selectedTemplateSource);
 
         var noMoreAttemptsTemplateSource = $("#no-more-attempts-template").html();
-        var noMoreAttemptsTemplate = Handlebars.compile(noMoreAttemptsTemplateSource);
+        noMoreAttemptsTemplate = Handlebars.compile(noMoreAttemptsTemplateSource);
 
         $('#content').on('click', '.js-get-place', checkForPlace);
         $('#content').on('click', '.js-select-place', selectPlace);
