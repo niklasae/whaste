@@ -4,14 +4,19 @@
 }
 
 @font-face {
+    font-family: honeyscript_semibold;
+    src: url('fonts/HoneyScript-SemiBold.ttf');
+}
+
+@font-face {
     font-family: appleberry_with_cyrillic;
     src: url('fonts/appleberry_with_cyrillic.ttf');
 }
 
-* { 
-   -webkit-box-sizing: border-box; 
-   -moz-box-sizing:    border-box; 
-   box-sizing:         border-box; 
+* {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing:    border-box;
+   box-sizing:         border-box;
 }
 
 #content {
@@ -20,7 +25,7 @@
   /*position: fixed;
   left: 50%;
   margin-left: -200px;*/
-  
+
   margin-top: 20px;
   text-align: center;
   font-family: appleberry_with_cyrillic;
@@ -93,9 +98,9 @@
 
 .stars p{
     width: 200px;
-    display: table-cell; 
-    vertical-align: middle; 
-    text-align: center; 
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .stars img.star {

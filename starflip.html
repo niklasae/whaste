@@ -1,0 +1,59 @@
+<head>
+<style type="text/css">
+
+	#f1_container {
+		position: relative;
+		margin: 10px auto;
+		width: 69px;
+		height: 69px;
+		z-index: 1;
+	}
+	#f1_container {
+		-webkit-perspective: 1000px;
+		perspective: 1000px;
+	}
+	#f1_card {
+		width: 100%;
+		height: 100%;
+		-webkit-transform-style: preserve-3d;
+		-webkit-transition: -webkit-transform 0.4s linear, background-color 0s linear 0.2s, color 0s linear 0.2s;
+		transform-style: preserve-3d;
+		transition: all 0.4s linear;
+	}
+	#f1_container:hover #f1_card, #f1_container.hover_effect #f1_card {
+		-webkit-transform: rotateY(180deg);
+		transform: rotateY(180deg);
+		-webkit-transition: -webkit-transform 0.2s linear, background-color 0s linear 0.1s, color 0s linear 0.1s;
+
+	}
+	.face {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	.face.back {
+		display: block;
+		-webkit-transform: rotateY(180deg);
+		-webkit-box-sizing: border-box;
+		transform: rotateY(180deg);
+		box-sizing: border-box;
+		color: white;
+		text-align: center;
+		background-color: #aaa;
+	}
+	
+</style>
+<div id="f1_container" class="hover">
+	<div id="f1_card" class="shadow">
+		<div class="front face">
+			<img src="/img/star1.jpg"/>
+		</div>
+		<div class="back face center">
+			<img src="/img/star2.jpg"/>
+		</div>
+ 		</div>
+</div>
+
+</head>
